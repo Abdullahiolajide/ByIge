@@ -1,0 +1,22 @@
+.app-body{
+  margin: 7px;
+}
+.hero-bg{
+  height: 100%;
+}
+/* .search-input{
+  background-color: red;
+  
+}
+.nav-input{
+  background-color: green;
+} */
+.nav-input-container:has(.search-input:focus) {
+ border: 1px solid rgb(73, 73, 73);
+}
+
+@media (max-width: 500px) {
+  .app-body{
+  margin: 5px;
+}
+}

@@ -1,0 +1,100 @@
+import React from 'react'
+import Navbar from './Navbar/index'
+import { IoSearchSharp } from 'react-icons/io5'
+
+
+const Hero = () => {
+  return (
+    
+    <div className='relative rounded-lg overflow-hidden h-[98vh]'>
+            <div className='fixed w-full'>
+                  <Navbar
+                    navColors="text-white"
+                    listColors="text-white"
+                    >
+                    <Navbar.Container>
+                        <Navbar.Logo>
+                        <span className="font-bold">BI </span>ByIge
+                        </Navbar.Logo>
+
+                        <Navbar.MenuIcon />
+
+                        <Navbar.List>
+                        <Navbar.ListItem>Hotel</Navbar.ListItem>
+                        <Navbar.ListItem>Train</Navbar.ListItem>
+                        <Navbar.ListItem>Flight</Navbar.ListItem>
+                        <Navbar.ListItem>Travel</Navbar.ListItem>
+                        <Navbar.ListItem>Car Rental</Navbar.ListItem>
+                        <Navbar.ListItem>
+                            <div className='nav-input-container flex md:py-2 py-1 px-2 md:px-3 md:px-5 text-sm bg-white/30 backdrop-blur-lg duration-500 rounded-md border border-1 border-gray-400 w-fit justify-between items-center' >
+                                <input type="text" placeholder='Search Destination...' className='search-input focus:outline-0' />
+                                                <IoSearchSharp />
+                            </div>
+                        </Navbar.ListItem>
+                        </Navbar.List>
+
+                        <Navbar.Buttons>
+                            <button className='text-sm md:text-base cursor-pointer text-white py-2 px-4 rounded-md mx-2'>Log In</button>
+                            <button className='text-sm md:text-base cursor-pointer text-black py-2 px-4 border border-white bg-white rounded-md mx-2'>Sign Up</button>
+                        {/* <Button>Login</Button>
+                        <Button outline className="text-black">Signup</Button> */}
+                        </Navbar.Buttons>
+                    </Navbar.Container>
+
+                    {/* Mobile Section */}
+                    <Navbar.Mobile>
+                        <Navbar.List screen>
+                        <Navbar.ListItem screen>Hotel</Navbar.ListItem>
+                        <Navbar.ListItem screen>Train</Navbar.ListItem>
+                        <Navbar.ListItem screen>Flight</Navbar.ListItem>
+                        <Navbar.ListItem screen>Travel</Navbar.ListItem>
+                        <Navbar.ListItem screen>Car Rental</Navbar.ListItem>
+                        <Navbar.ListItem>
+                            <div className='nav-input flex md:py-2 py-1 px-2 md:px-3 md:px-5 text-sm bg-white/30 backdrop-blur-lg      rounded-md border border-1 border-gray-400 w-fit justify-between items-center' >
+                            <input type="text" placeholder='Search Destination...' className='focus:outline-0 search-input' />
+                                <IoSearchSharp />
+                            </div>
+                        </Navbar.ListItem>
+                        </Navbar.List>
+                    </Navbar.Mobile>
+                    </Navbar>
+            </div>
+            <div className='absolute -z-50 h-full w-full'>
+                <img src="https://wallpapers.com/images/hd/winter-streets-full-screen-hd-desktop-1q0dygcf3sty40ef.jpg" alt="" className=' w-full h-full object-cover'/>
+            </div>
+            {/* bakdrop */}
+                <div className='absolute -z-50 bg-black/50 w-full h-full'></div>
+
+            {/* content div  */}
+            <section className='h-full flex'>
+                <div className='mt-auto w-full'>
+                  <main className='text-white md:flex justify-between p-3 md:p-8 w-[100%]'>
+                    {/* post content  */}
+                    <div className='max-w-lg mb-4'>
+                        <div className='py-2 px-5 text-sm rounded-full w-fit backdrop-blur-2xl'>Destination</div>
+                        <h2 className='mt-4 mb-2 text-3xl'>Exploring the Wonders of Hiking</h2>
+                        <p className='text-md tracking-wide max-w-sm'>An iconic landmarks, the post unveils the secrets that make this destination a traveler's paradise.</p>
+                    </div>
+                    {/* post content end  */}
+
+                    {/* post details  */}
+                     <div className='max-w-sm flex items-center ml-auto'>
+                       <div className="ml-auto mt-10 md:mt-0">
+                        <div className='flex items-center'>
+                            <div className='w-[45px] h-[45px] rounded-3xl overflow-hidden'>
+                                <img src="https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg" alt="" width={100} />
+                            </div>
+                                <p className='px-2 text-lg'>Theodore Reginald</p>
+                        </div>
+                        <p className='text-center py-3'>24 Jan 2024 • 10 mins read</p>
+                       </div>
+                    </div>
+                    {/* post details end  */}
+                  </main>
+                </div>
+            </section>
+        </div>
+  )
+}
+
+export default Hero

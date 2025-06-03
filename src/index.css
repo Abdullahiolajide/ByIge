@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/c/ss2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import "tailwindcss";
+
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap');
 :root {
   --bg-color: white;
   --text-color: black;
@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'General Sans', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar/index'
 import { IoSearchSharp } from 'react-icons/io5'
+import Badge from './Badge'
+import UserBadge from './UserBadge'
 
 
 const Hero = () => {
@@ -26,7 +28,7 @@ const Hero = () => {
                         <Navbar.ListItem>Travel</Navbar.ListItem>
                         <Navbar.ListItem>Car Rental</Navbar.ListItem>
                         <Navbar.ListItem>
-                            <div className='nav-input-container flex md:py-2 py-1 px-2 md:px-3 md:px-5 text-sm bg-white/30 backdrop-blur-lg duration-500 rounded-md border border-1 border-gray-400 w-fit justify-between items-center' >
+                            <div className='nav-input-container flex md:py-2 py-1 px-2 md:px-3 md:px-5 text-sm bg-white/30 backdrop-blur-lg duration-300 rounded-md border border-1 border-gray-400 w-fit justify-between items-center' >
                                 <input type="text" placeholder='Search Destination...' className='search-input focus:outline-0' />
                                                 <IoSearchSharp />
                             </div>
@@ -71,8 +73,8 @@ const Hero = () => {
                   <main className='text-white md:flex justify-between p-3 md:p-8 w-[100%]'>
                     {/* post content  */}
                     <div className='max-w-lg mb-4'>
-                        <div className='py-2 px-5 text-sm rounded-full w-fit backdrop-blur-2xl'>Destination</div>
-                        <h2 className='mt-4 mb-2 text-3xl'>Exploring the Wonders of Hiking</h2>
+                        <Badge>Destination</Badge>
+                        <h2 className='mt-4 mb-2 text-3xl font-medium'>Exploring the Wonders of Hiking</h2>
                         <p className='text-md tracking-wide max-w-sm'>An iconic landmarks, the post unveils the secrets that make this destination a traveler's paradise.</p>
                     </div>
                     {/* post content end  */}
@@ -80,12 +82,10 @@ const Hero = () => {
                     {/* post details  */}
                      <div className='max-w-sm flex items-center ml-auto'>
                        <div className="ml-auto mt-10 md:mt-0">
-                        <div className='flex items-center'>
-                            <div className='w-[45px] h-[45px] rounded-3xl overflow-hidden'>
-                                <img src="https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg" alt="" width={100} />
-                            </div>
-                                <p className='px-2 text-lg'>Theodore Reginald</p>
-                        </div>
+                       
+                           <UserBadge src={"https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg"} width={45}>
+                           Theodore Reginald</UserBadge>
+                       
                         <p className='text-center py-3'>24 Jan 2024 • 10 mins read</p>
                        </div>
                     </div>

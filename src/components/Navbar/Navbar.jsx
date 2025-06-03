@@ -17,7 +17,6 @@ const Navbar = ({children, navColors, listColors}) => {
         <nav className={`${navColors}`} >
          {children}
         </nav>
-        <div className='h-100'></div>
 
         </NavbarContext.Provider>
     </div>

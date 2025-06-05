@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, useParams, useSearchParams } from 'react-router-dom'
 import FilterBar from './FilterBar'
 import BlogCard from './BlogCard'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 const Blogs = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -25,6 +26,17 @@ const Blogs = () => {
             <BlogCard />
             <BlogCard />
             <BlogCard />
+            <BlogCard />
+            <BlogCard />
+        </div>
+
+        <div className='mx-auto w-fit flex space-x-3 mt-8'>
+            <div className='w-[39px] h-[39px] flex items-center justify-center border border-gray-300 rounded-md cursor-pointer'> <IoIosArrowBack /> </div>
+            <div className='w-[40px] h-[40px] flex items-center justify-center bg-gray-300 rounded-md cursor-pointer'>1</div>
+            <div className='w-[40px] h-[40px] flex items-center justify-center rounded-md cursor-pointer'>2</div>
+            <div className='w-[40px] h-[40px] flex items-center justify-center rounded-md cursor-pointer'>3</div>
+            <div className='w-[40px] h-[40px] flex items-center justify-center rounded-md cursor-pointer'>4</div>
+            <div className='w-[39px] h-[39px] flex items-center justify-center border border-gray-300 rounded-md cursor-pointer'> <IoIosArrowForward /> </div>
         </div>
     </div>
   )

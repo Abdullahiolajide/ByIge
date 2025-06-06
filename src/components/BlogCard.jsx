@@ -6,9 +6,9 @@ const BlogCard = () => {
   return (
     <div className='container max-w-xl'>
         {/* image div  */}
-        <div className='w-full rounded-md overflow-hidden relative h-64'>
+        <div className='w-full rounded-md overflow-hidden relative h-64 -z-50'>
             <img src="https://wallpapers.com/images/hd/winter-streets-full-screen-hd-desktop-1q0dygcf3sty40ef.jpg" alt="" className='w-full h-full object-cover absolute -z-50' />
-            <div className='m-2'><Badge>Lifestyle</Badge></div>
+            <div className='m-2 '><Badge>Lifestyle</Badge></div>
         </div>
         <p className='py-2 text-gray-500'>24 Jan 2024 • 10 mins read</p>
         <h1 className='text-2xl font-medium'>Unveiling the Secrets Beyound the Tourist Trails</h1>

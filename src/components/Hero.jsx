@@ -9,10 +9,10 @@ const Hero = () => {
   return (
     
     <div className='relative rounded-lg overflow-hidden h-[98vh]'>
-            <div className='fixed w-full'>
+            <div className='fixed w-full overflow-hidden'>
                   <Navbar
-                    navColors="text-white"
-                    listColors="text-white"
+                    navColors=""
+                    listColors=""
                     >
                     <Navbar.Container>
                         <Navbar.Logo>
@@ -36,7 +36,7 @@ const Hero = () => {
                         </Navbar.List>
 
                         <Navbar.Buttons>
-                            <button className='text-sm md:text-base cursor-pointer text-white py-2 px-4 rounded-md mx-2'>Log In</button>
+                            <button className='text-sm md:text-base cursor-pointer  py-2 px-4 rounded-md mx-2'>Log In</button>
                             <button className='text-sm md:text-base cursor-pointer text-black py-2 px-4 border border-white bg-white rounded-md mx-2'>Sign Up</button>
                         {/* <Button>Login</Button>
                         <Button outline className="text-black">Signup</Button> */}

@@ -1,4 +1,7 @@
 import React from 'react'
+import { FaArrowRightLong } from 'react-icons/fa6'
+import { HiArrowLongRight } from 'react-icons/hi2'
+import { IoIosArrowRoundForward } from 'react-icons/io'
 import { TbWorldHeart } from 'react-icons/tb'
 
 const ShowcaseSection = () => {
@@ -19,7 +22,7 @@ const ShowcaseSection = () => {
                          <h1 className='text-3xl'>Explore more to get your comfot zone</h1>
                         <p className='mt-1'>Book your perfect stay with us</p>
                        </div>
-                        <button className='cursor-pointer bg-white rounded text-black px-3 py-2 font-medium w-fit'>Booking Now</button>
+                        <button className='flex items-center space-x-2 cursor-pointer bg-white rounded text-black px-3 py-2 font-medium w-fit'><span>Booking Now</span> <span className='text-2xl'><HiArrowLongRight /></span></button>
                     </div>
                 </div>
                 {/* card 1 end */}

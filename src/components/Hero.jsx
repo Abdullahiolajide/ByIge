@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar/index'
 import { IoSearchSharp } from 'react-icons/io5'
 import Badge from './Badge'
 import UserBadge from './UserBadge'
+import { MdClose } from 'react-icons/md'
+import LogIn from './Auth/LogIn'
+import Auth from '../pages/Auth'
 
 
 const Hero = () => {
-  return (
+    const [showAuth, setShowAuth] = useState(false);
+    const [path, setPath] = useState('')
     
-    <div className='relative rounded-lg overflow-hidden h-[98vh]'>
-            <div className='fixed w-full overflow-hidden'>
+    return (
+        
+        <div className='relative rounded-lg overflow-hidden h-[98vh] hero-body'>
+            <div className='fixed w-full overflow-hidden z-50'>
                   <Navbar
                     navColors=""
                     listColors=""
@@ -36,8 +42,8 @@ const Hero = () => {
                         </Navbar.List>
 
                         <Navbar.Buttons>
-                            <button className='text-sm md:text-base cursor-pointer  py-2 px-4 rounded-md mx-2'>Log In</button>
-                            <button className='text-sm md:text-base cursor-pointer text-black py-2 px-4 border border-white bg-white rounded-md mx-2'>Sign Up</button>
+                            <button className='text-sm md:text-base cursor-pointer  py-2 px-4 rounded-md mx-2' onClick={()=>{setShowAuth(true); setPath('/login')}}>Log In</button>
+                            <button className='text-sm md:text-base cursor-pointer text-black py-2 px-4 border border-white bg-white rounded-md mx-2' onClick={()=>{setShowAuth(true); setPath('/register')}}>Sign Up</button>
                         {/* <Button>Login</Button>
                         <Button outline className="text-black">Signup</Button> */}
                         </Navbar.Buttons>
@@ -61,12 +67,15 @@ const Hero = () => {
                     </Navbar.Mobile>
                     </Navbar>
             </div>
+            
             <div className='absolute -z-50 h-full w-full'>
                 <img src="https://wallpapers.com/images/hd/winter-streets-full-screen-hd-desktop-1q0dygcf3sty40ef.jpg" alt="" className=' w-full h-full object-cover'/>
             </div>
+            
             {/* bakdrop */}
                 <div className='absolute -z-50 bg-black/50 w-full h-full'></div>
 
+                        {showAuth && <Auth path={path} showAuth={showAuth} setShowAuth={setShowAuth}/>}
             {/* content div  */}
             <section className='h-full flex'>
                 <div className='mt-auto w-full'>
@@ -93,6 +102,9 @@ const Hero = () => {
                   </main>
                 </div>
             </section>
+
+            {/* The Auth Section for Signup and SignIn  */}
+           
         </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavbarLogo = ({children}) => {
   return (
-    <div className='flex items-center pr-4 '>
+    <div className='flex items-center pr-2 '>
                     <h1 className='md:text-3xl text-xl'>{children}</h1>
     </div>
   )

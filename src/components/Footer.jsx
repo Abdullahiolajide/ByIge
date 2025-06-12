@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
             <div>
                 <p className='text-sm font-medium mb-2'>Get Updates</p>
-                <div className='bg-[#333333] rounded border-1 border-gray-400/40 pl-2 pr-1 py-1 w-fit'>
+                <div className='bg-[#333333] rounded border-1 border-gray-400/40 pl-2 pr-1 py-1 w-fit max-w-sm flex space-x-2'>
                     <input type="text" placeholder='Enter your email' className='border-0 focus:outline-0'/>
                     <button className='text-sm font-medium cursor-pointer text-black py-2 px-3 border border-white bg-white rounded-md '>Subscribe</button>
                 </div>

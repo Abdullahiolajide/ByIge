@@ -21,7 +21,7 @@ const LogIn = ({setLocationPath}) => {
         console.log(userCredentials)
     }
   return (
-    <div>
+    <div className='text-sm md:text-base mx-auto'>
         {!emailAuth ? (
 
         <>

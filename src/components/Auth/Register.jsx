@@ -20,7 +20,7 @@ const Register = ({setLocationPath}) => {
         console.log(userCredentials)
     }
   return (
-    <div>
+    <div className='mx-auto'>
         {!emailAuth ?
                 (
 

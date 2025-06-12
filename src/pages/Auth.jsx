@@ -26,14 +26,16 @@ export default function Auth({ path, setShowAuth, showAuth }){
    
     return (
         <>
-        <section className={`duration-800 auth-section h-full backdrop-blur-xs w-full fixed top- z-50 flex items-center justify-center`}>
+        <section className={`duration-800 auth-section md:h-full backdrop-blur-xs w-full fixed top-0 z-50 flex items-center justify-center`}>
             <div className='w-[100%] mr-3 bg-black/20 -z-50 h-full absolute' onClick={()=>close()}></div>
-            <div className={`bg-white rounded animate-show max-w-2xl w-full ${isClosed ? 'animate-close' :""}`}>
-                <span className='text-2xl float-right m-2 text-gray-500 hover:text-gray-900 cursor-pointer' onClick={()=>close()}><MdClose /></span>
-                    <main className='mx-2 my-10'>
+            <div className={`h-[100vh] md:h-fit bg-white rounded animate-show max-w-2xl w-full ${isClosed ? 'animate-close' :""}`}>
+                <span className='text-2xl float-right my-4 mx-6 text-gray-500 hover:text-gray-900 cursor-pointer' onClick={()=>close()}><MdClose /></span>
+                   <div className='h-full flex items-center w-full justify-center'>
+                     <main className='mx-2 my-5 flex items-center'>
                       {locationPath == '/signin' || locationPath == '/login' ? <LogIn setLocationPath={setLocationPath}/> : <Register setLocationPath={setLocationPath}/>}
                       {/* <LogIn /> */}
                     </main>
+                   </div>
             </div>
         </section>
         </>

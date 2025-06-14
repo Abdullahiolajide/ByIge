@@ -1,6 +1,7 @@
 const User = require("../Model/users")
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 
@@ -39,8 +40,14 @@ const createAccount = async (req, res)=>{
         });
     }
     catch(err){
-        console.log(err)
-        res.status(500).send('Error creating User')
+      console.error("Full error:", err);
+
+        // Check if it's a duplicate email error inside the cause
+        if (err?.cause?.code === 11000) {
+            return res.status(400).json({ message: "Email already exists" });
+        }
+
+        res.status(500).json({ message: "Something went wrong" });
     }
 }
 
@@ -66,7 +73,31 @@ const verifyEmail = async (req, res)=>{
 
 }
 
+
+const login = async(req, res)=>{
+    const {email, password} = req.body
+
+    try{
+        const user = await User.findOne({ email })
+
+        if (!user) return res.status(400).json({messae: "Invalid Email"})
+
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(!isMatch) return res.status(400).json({message: "Incorrect Password"})
+        
+        if(!user.isVerified) return res.status(403).json({message: "Please verify your email "})
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        res.json({ message: 'Login successful', token });
+        
+    } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error', err });
+  }
+
+}
 module.exports = {
     createAccount,
-    verifyEmail
+    verifyEmail,
+    login
 }

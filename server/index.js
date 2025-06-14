@@ -3,9 +3,10 @@ const app = express()
 const auth = require('./routes/Auth')
 const connectDB = require('./db/connect')
 const PORT = 4000
+const cors = require('cors')
 require('dotenv').config()
 
-
+app.use(cors())
 app.use(express.json())
 app.use('/api/auth/', auth)
 // get

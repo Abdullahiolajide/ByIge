@@ -4,10 +4,14 @@ import { GoMail } from 'react-icons/go'
 import { GrApple } from 'react-icons/gr'
 import { RiTwitterXLine } from 'react-icons/ri'
 import AuthButton from './AuthButton'
+import { backendUrl } from '../../../globals'
+import Spinner from '../Spinner'
 
 const LogIn = ({setLocationPath}) => {
     const [emailAuth, setEmailAuth] = useState(false)
     const [userCredentials, setUserCredentials] = useState({})
+    const [errMeaasge, setErrMessage] = useState('')
+    const [loading, setLoading] = useState(false)
 
     function handleChange(e){
         const {name, value} = e.target
@@ -17,7 +21,37 @@ const LogIn = ({setLocationPath}) => {
         }))
         // console.log(userCredentials)
     }
-    function login(){
+    async function login(){
+        const {email, password} = userCredentials
+        const endpoint = `${backendUrl}/api/auth/login`
+        if(!email || !password) {
+            return setErrMessage('Please input credentials')
+        }
+        setLoading(true)
+        try{
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({email, password})
+                });
+            const data = await res.json()
+            setLoading(false)
+            if (!res.ok) throw new Error(data.message ||"Error fetching data");
+            const {token} = data
+            console.log(data)
+            localStorage.setItem("ByIgeAuthToken", token);
+
+
+            
+
+        }catch(err){
+            setLoading(false)
+            setErrMessage(err.message)
+            console.log(err)
+        }
+
         console.log(userCredentials)
     }
   return (
@@ -62,6 +96,7 @@ const LogIn = ({setLocationPath}) => {
                     {/* input fields  */}
 
                         <main className='mt-5 w-full max-w-xs'>
+                            {errMeaasge && <div className='text-sm text-center text-red-600'>{errMeaasge}</div>}
                             <div className=''>
                                 <label htmlFor="" className='text-sm'>Email</label> <br />
                                 <input
@@ -85,7 +120,10 @@ const LogIn = ({setLocationPath}) => {
                             </div>
 
                             <div className='flex justify-center mt-5'>
-                                <button className='text-sm bg-black text-white px-3 py-2 rounded-3xl mx-auto cursor-pointer' onClick={login}>Create account</button>
+                                <button className={`text-sm bg-black text-white px-3 py-2 rounded-3xl mx-auto cursor-pointer flex items-center space-x-2 ${loading && 'bg-black/80'}`} onClick={login}>
+                                <div className='px-5'>Login</div>
+                                {loading && <Spinner width={'20px'} /> }
+                                </button>
                             </div>
                         </main>
 

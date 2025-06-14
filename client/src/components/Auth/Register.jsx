@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { GoMail } from 'react-icons/go'
 import AuthButton from './AuthButton'
+import { backendUrl } from '../../../globals'
+import Spinner from '../Spinner'
 
 const Register = ({setLocationPath}) => {
     const [emailAuth, setEmailAuth] = useState(false)
     const [userCredentials, setUserCredentials] = useState({})
+    const [errMeaasge, setErrMessage] = useState('')
+    const [loading, setLoading] = useState(false)
 
      function handleChange(e){
         const {name, value} = e.target
@@ -16,7 +20,34 @@ const Register = ({setLocationPath}) => {
         // console.log(userCredentials)
     }
 
-     function register(){
+     async function register(){
+        const {email, password} = userCredentials
+        if(!email || !password) {
+            return setErrMessage('Please input credentials')
+        }
+
+        const endpoint = `${backendUrl}/api/auth/register`
+        setLoading(true)
+        try{
+            const res = await fetch(endpoint, {
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email, password})
+            });
+            const data = await res.json()
+            setLoading(false)
+            if (!res.ok) throw new Error(data.message || "Registration failed");
+            console.log(data)
+            
+
+        }catch(err){
+            setLoading(false)
+            console.log(err.message)
+            setErrMessage(err.message)
+        }
+
         console.log(userCredentials)
     }
   return (
@@ -57,6 +88,7 @@ const Register = ({setLocationPath}) => {
                             <p className='text-sm text-center'>Enter your email address and password to create an account</p>
 {/* Input field  */}
                           <main className='mt-5 w-full max-w-xs'>
+                            {errMeaasge && <div className='text-sm text-center text-red-600'>{errMeaasge}</div>}
                             <div className=''>
                                 <label htmlFor="" className='text-sm'>Email</label> <br />
                                 <input
@@ -80,7 +112,10 @@ const Register = ({setLocationPath}) => {
                             </div>
 
                             <div className='flex justify-center mt-5'>
-                                <button className='text-sm bg-black text-white px-3 py-2 rounded-3xl mx-auto cursor-pointer' onClick={register}>Create account</button>
+                                <button className={`text-sm bg-black text-white px-3 py-2 rounded-3xl mx-auto cursor-pointer flex items-center space-x-2 ${loading && 'bg-black/80'}`} onClick={register}>
+                                    <div>Create account</div>
+                                     {loading && <Spinner width={'20px'} />}
+                                     </button>
                             </div>
                         </main>
 

@@ -1,7 +1,8 @@
 const User = require("../Model/users")
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { frontendUrl } = require("../global");
 require('dotenv').config()
 
 
@@ -61,12 +62,13 @@ const verifyEmail = async (req, res)=>{
 
     if (!user) return res.status(404).send("User not found.");
 
-    if (user.isVerified) return res.send("Email already verified.");
+    if (user.isVerified) return res.redirect(`${frontendUrl}/email-verified`)
 
     user.isVerified = true;
     await user.save();
 
-    res.send("Email successfully verified. You can now log in.");
+   
+    res.redirect(`${frontendUrl}/email-verified`)
   } catch (err) {
     res.status(400).send("Invalid or expired verification link.");
   }

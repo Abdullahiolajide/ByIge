@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const auth = require('./routes/Auth')
+const dashboard = require('./routes/dashboard')
 const connectDB = require('./db/connect')
 const PORT = 4000
 const cors = require('cors')
@@ -8,7 +9,9 @@ require('dotenv').config()
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('public'))
 app.use('/api/auth/', auth)
+app.use('/api/dashboard', dashboard)
 // get
 // post
 // Put

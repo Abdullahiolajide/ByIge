@@ -4,6 +4,7 @@ import { GoMail } from 'react-icons/go'
 import AuthButton from './AuthButton'
 import { backendUrl } from '../../../globals'
 import Spinner from '../Spinner'
+import { toast } from 'react-toastify'
 
 const Register = ({setLocationPath}) => {
     const [emailAuth, setEmailAuth] = useState(false)
@@ -39,6 +40,13 @@ const Register = ({setLocationPath}) => {
             const data = await res.json()
             setLoading(false)
             if (!res.ok) throw new Error(data.message || "Registration failed");
+            toast.success(
+                <div>
+                    <div className='text-sm'>Account created Successfully</div>
+                    <div>An email has been sent to you for verification</div>
+                </div>
+                )
+            setLocationPath('/login')
             console.log(data)
             
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { GoMail } from 'react-icons/go'
 import { GrApple } from 'react-icons/gr'
@@ -6,12 +6,23 @@ import { RiTwitterXLine } from 'react-icons/ri'
 import AuthButton from './AuthButton'
 import { backendUrl } from '../../../globals'
 import Spinner from '../Spinner'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const LogIn = ({setLocationPath}) => {
     const [emailAuth, setEmailAuth] = useState(false)
     const [userCredentials, setUserCredentials] = useState({})
     const [errMeaasge, setErrMessage] = useState('')
     const [loading, setLoading] = useState(false)
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log(location)
+
+    const from = location.state?.from || '/dashboard'
+   useEffect(()=>{
+     if (location.state?.message) {
+        setErrMessage(location.state?.message)
+    }
+   }, [])
 
     function handleChange(e){
         const {name, value} = e.target
@@ -42,6 +53,7 @@ const LogIn = ({setLocationPath}) => {
             const {token} = data
             console.log(data)
             localStorage.setItem("ByIgeAuthToken", token);
+            navigate(from, {replace:true})
 
 
             
@@ -60,7 +72,9 @@ const LogIn = ({setLocationPath}) => {
 
         <>
                 <main className="max-w-lg space-y-4 mx-auto">
-                    <h1 className='text-3xl text-center mt-3 mb-10'>Welcome back.</h1>
+                    { location.state?.message && <div className='text-sm text-red-700 text-center'>{location.state?.message}</div>
+                    }
+                       <h1 className='text-3xl text-center mt-3 mb-10'>Welcome back.</h1>
                     {/* Sign in options  */}
 
                     {/* google  */}

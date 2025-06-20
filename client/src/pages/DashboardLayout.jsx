@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { backendUrl } from '../../globals'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { CiBellOn, CiSearch } from 'react-icons/ci'
+import { FiEdit } from 'react-icons/fi'
 
 const DashboardLayout = () => {
     const [authorized, setAuthorized] = useState(true)
@@ -27,7 +29,26 @@ const DashboardLayout = () => {
     if (authorized) {
         return (
           <div>
-              The dashboard Loayout
+              <nav className='flex border border-b border-gray-200 px-6 py-2 items-center justify-between'>
+              <div className='flex items-center'>
+                  <div className='text-2xl'>
+                    <span className="font-bold">BI </span>ByIge
+                </div>
+               <div>
+                {/* <input type="text" placeholder='Search' className='bg-gray-200 px-2 mx-3 py-2'/> */}
+                    <div className='nav-input flex md:py-2 py-1 px-2 md:px-3 md:px-5 mx-3 md:mx-6 text-sm bg-gray-100 backdrop-blur-lg rounded-4xl w-fit justify-between items-center ' >
+                        <span className='text-2xl text-gray-600'><CiSearch /></span>
+                    <input type="text" placeholder='Search' className='focus:outline-0 search-input px-2' />
+                    </div>
+               </div>
+              </div>
+
+               <div className='flex space-x-6 items-center'>
+                    <div className='flex items-center text-gray-400'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div>
+                    <div className='text-3xl text-gray-400'><CiBellOn /></div>
+                    <div className='flex items-center w-[40px] h-[40px] bg-gray-700 text-white text-xl rounded-full justify-center'>A</div>
+               </div>
+              </nav>
               <Outlet />
           </div>
         )

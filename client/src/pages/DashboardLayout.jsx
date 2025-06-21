@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { backendUrl } from '../../globals'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
 import { CiBellOn, CiSearch } from 'react-icons/ci'
 import { FiEdit } from 'react-icons/fi'
+const UserContext = createContext()
 
 const DashboardLayout = () => {
     const [authorized, setAuthorized] = useState(true)
+    const [user, setUser] = useState('')
     const location = useLocation();
     useEffect(()=>{
-        console.log('ran')
         const authorize = async ()=>{
             const res = await fetch(`${backendUrl}/api/dashboard`, {
                 headers:{
@@ -16,11 +17,11 @@ const DashboardLayout = () => {
                 }
             })
             if(!res.ok){
-                setAuthorized(false)
-                return console.log(res)
+                return setAuthorized(false)
+                
             }
             const data = await res.json()
-            console.log(data)
+            setUser(data.data)
 
         }
         authorize()
@@ -29,7 +30,7 @@ const DashboardLayout = () => {
     if (authorized) {
         return (
           <div>
-              <nav className='flex border border-b border-gray-200 px-6 py-2 items-center justify-between'>
+              <nav className='flex border border-b border-gray-200 px-6 py-2 items-center justify-between fixed w-full top-0 bg-white'>
               <div className='flex items-center'>
                   <div className='text-2xl'>
                     <span className="font-bold">BI </span>ByIge
@@ -44,12 +45,16 @@ const DashboardLayout = () => {
               </div>
 
                <div className='flex space-x-6 items-center'>
-                    <div className='flex items-center text-gray-400'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div>
+                    <Link to={'create-blog'}><button><div className='flex items-center text-gray-400'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div></button></Link>
                     <div className='text-3xl text-gray-400'><CiBellOn /></div>
                     <div className='flex items-center w-[40px] h-[40px] bg-gray-700 text-white text-xl rounded-full justify-center'>A</div>
                </div>
               </nav>
-              <Outlet />
+
+              <UserContext.Provider value={user}>
+                <Outlet />
+              </UserContext.Provider>
+              
           </div>
         )
     }else{
@@ -59,3 +64,4 @@ const DashboardLayout = () => {
 }
 
 export default DashboardLayout
+export {UserContext}

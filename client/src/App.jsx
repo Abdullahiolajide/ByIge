@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import DashboardLayout from './pages/DashboardLayout'
 import Dashboard from './pages/Dashboard'
+import CreateBlog from './pages/CreateBlog'
 
 function App() {
   const authPaths = ['/login', '/signin', '/register', '/signup']
@@ -25,6 +26,7 @@ function App() {
 
         <Route path='/dashboard/' element={<DashboardLayout />}>
           <Route index element={<Dashboard />}/>
+          <Route path='create-blog' element={<CreateBlog />}/>
         </Route>
 
       </Routes>

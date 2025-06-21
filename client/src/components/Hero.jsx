@@ -14,7 +14,7 @@ const Hero = () => {
     
     return (
         
-        <div className='relative rounded-lg overflow-hidden h-[98vh] hero-body'>
+        <div className='relative rounded-lg overflow-hidden h-[70vh] hero-body'>
             <div className='fixed w-full overflow-hidden z-50'>
                   <Navbar
                     navColors=""

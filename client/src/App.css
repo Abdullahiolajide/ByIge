@@ -23,7 +23,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.write{
+  font-family: 'Times New Roman', Times, serif;
+  outline: none;
+}
 .animate-show{
   animation: show 0.2s ease-out;
 }

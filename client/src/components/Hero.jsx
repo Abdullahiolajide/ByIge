@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from './Navbar/index'
 import { IoSearchSharp } from 'react-icons/io5'
 import Badge from './Badge'
@@ -6,6 +6,7 @@ import UserBadge from './UserBadge'
 import { MdClose } from 'react-icons/md'
 import LogIn from './Auth/LogIn'
 import Auth from '../pages/Auth'
+import { ToastContext } from '../App'
 
 
 const Hero = () => {

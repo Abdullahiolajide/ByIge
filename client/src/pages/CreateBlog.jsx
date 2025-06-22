@@ -5,11 +5,13 @@ import { UserContext } from './DashboardLayout'
 import { backendUrl } from '../../globals'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
+import { ToastContext } from '../App'
 
 const CreateBlog = () => {
     const {email, _id} = useContext(UserContext)
     const [post, setPost] = useState({})
     const [loading, setLoading] = useState(false)
+    const {myToast} = useContext(ToastContext)
     const navigate = useNavigate()
     const handleChange = (e)=>{
         setPost(prevPost=>({
@@ -34,10 +36,11 @@ const CreateBlog = () => {
             method: 'POST',
             body:formData
         })
+        myToast("Blog Created Succcessfully", 7000)
         setLoading(false)
-        navigate('/dashboard')
         const data = await result.json()
         console.log(data)
+        navigate('/dashboard')
     }
     catch(error){
            setLoading(false)

@@ -3,10 +3,12 @@ import BlogCard from '../components/BlogCard'
 import UserBadge from '../components/UserBadge'
 import { backendUrl } from '../../globals'
 import Spinner from '../components/Spinner'
+import { useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
   const [blogs, setBlogs] = useState()
+  const navigate = useNavigate()
   
   const getBlogs = async()=>{
     try{
@@ -21,7 +23,7 @@ const Dashboard = () => {
     }
       const data = await response.json()
       setBlogs(data.data)
-      console.log(data.data)
+      // console.log(data.data) 
 
     }catch(error){
       console.log(error)
@@ -53,7 +55,7 @@ const Dashboard = () => {
               {/* </div> */}
 
              {blogs.map((blog, i)=>(
-               <div className='h-52 border-b border-gray-300 mx-10 py-3 max-w-2xl flex' key={i}>
+               <div className='h-52 border-b border-gray-300 mx-10 py-3 max-w-2xl flex' key={i} onClick={()=> navigate(`/blog/${blog._id}`)}>
                 <div className='w-9/12 p-3'>
                    <UserBadge  width={15} className={"text-black"}>
                     {blog.userId.email}

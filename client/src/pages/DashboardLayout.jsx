@@ -45,7 +45,7 @@ const DashboardLayout = () => {
               </div>
 
                <div className='flex space-x-6 items-center'>
-                    <Link to={'create-blog'}><button><div className='flex items-center text-gray-400'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div></button></Link>
+                    <Link to={'create-blog'}><button><div className='flex items-center text-gray-400 cursor-pointer'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div></button></Link>
                     <div className='text-3xl text-gray-400'><CiBellOn /></div>
                     <div className='flex items-center w-[40px] h-[40px] bg-gray-700 text-white text-xl rounded-full justify-center'>A</div>
                </div>

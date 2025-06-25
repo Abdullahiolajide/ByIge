@@ -10,6 +10,7 @@ import DashboardLayout from './pages/DashboardLayout'
 import Dashboard from './pages/Dashboard'
 import CreateBlog from './pages/CreateBlog'
 import Blogs from './components/Blogs'
+import Blog from './pages/Blog'
 const ToastContext = createContext()
 
 function App() {
@@ -44,7 +45,11 @@ function App() {
           <Route path={authPath} element={<Auth />}/>
         ))}
         <Route path='/email-verified' element={<EmailVerified />}/>
+        {/* <Route path='/' element={<Nav}>
+        
+        </Route> */}
         <Route path='/blogs' element={<Blogs />}/>
+          <Route path='/blog/:id' element={<Blog />}/>
 
         <Route path='/dashboard/' element={<DashboardLayout />}>
           <Route index element={<Dashboard />}/>

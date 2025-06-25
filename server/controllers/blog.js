@@ -37,7 +37,18 @@ const getBlogs = async (req, res)=>{
 
 }
 
+const getBlog = async (req, res)=>{
+    try{
+        const blogs = await Blog.findOne({_id:req.params.id}).populate('userId');
+        res.status(200).json({messsage:"success", data:blogs})
+    }catch(error){
+        console.log("Error fetching Blog", error.message)
+         res.status(500).json({messsage: "Error fetching Blog", error:error.message})
+    }
+}
+
 module.exports = {
     createBlog,
-    getBlogs
+    getBlogs,
+    getBlog,
 }

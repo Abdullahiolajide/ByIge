@@ -50,7 +50,7 @@ const Blog = () => {
                                 {blog?.userId?.email || "o"}
             </UserBadge>
             </div>
-            <p className='write text-xl'>{content}</p>
+            <p className='write text-xl px-2'>{content}</p>
            </div>
         </section>
         <Footer />

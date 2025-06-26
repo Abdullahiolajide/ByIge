@@ -1,14 +1,19 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { backendUrl } from '../../globals'
-import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { CiBellOn, CiSearch } from 'react-icons/ci'
 import { FiEdit } from 'react-icons/fi'
+import Menu from '../components/Menu/Menu'
+import MenuButton from '../components/Menu/MenuButton'
+import MenuList from '../components/Menu/MenuList'
+import MenuItem from '../components/Menu/MenuItem'
 const UserContext = createContext()
 
 const DashboardLayout = () => {
     const [authorized, setAuthorized] = useState(true)
     const [user, setUser] = useState('')
     const location = useLocation();
+    const navigate = useNavigate()
     useEffect(()=>{
         const authorize = async ()=>{
             const res = await fetch(`${backendUrl}/api/dashboard`, {
@@ -47,7 +52,19 @@ const DashboardLayout = () => {
                <div className='flex space-x-6 items-center'>
                     <Link to={'create-blog'}><button><div className='flex items-center text-gray-400 cursor-pointer'> <span className='text-2xl  mx-2'><FiEdit /> </span> <span>Write</span></div></button></Link>
                     <div className='text-3xl text-gray-400'><CiBellOn /></div>
-                    <div className='flex items-center w-[40px] h-[40px] bg-gray-700 text-white text-xl rounded-full justify-center'>A</div>
+                    <Menu className='z-50'>
+                              <MenuButton>
+                                <div className='cursor-pointer flex items-center w-[40px] h-[40px] bg-gray-700 text-white text-xl rounded-full justify-center'>{user.email && user.email.split('')[0].toUpperCase()}</div>
+                              </MenuButton>
+                              <MenuList>
+                               <div className='z-100 w-100 shadow-md mt-3 -ml-26'>
+                                <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'><span onClick={()=> navigate('/') }>Home</span></MenuItem>
+                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'>My Blogs </MenuItem>
+                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'>Logout </MenuItem>
+                               </div>
+                              </MenuList>
+                        </Menu>
+                    
                </div>
               </nav>
 

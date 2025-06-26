@@ -39,6 +39,9 @@ function App() {
       </div>}
       <ToastContainer position="top-right" autoClose={3000} />
       <ToastContext.Provider value={{myToast}}>
+        
+        
+
         <Routes>
         <Route path='/' element={<Home />}/>
         {authPaths.map((authPath)=>(

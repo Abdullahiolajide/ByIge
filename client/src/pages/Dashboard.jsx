@@ -33,7 +33,7 @@ const Dashboard = () => {
     getBlogs()
   }, [])
    if(blogs) {return (
-    <div className='mt-20'>
+    <div className='mt-20 -z-50'>
       {/* <div className='flex gap-6 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-12 mx-10 w-fit'> */}
 
       {/* {
@@ -55,7 +55,7 @@ const Dashboard = () => {
               {/* </div> */}
 
              {blogs.map((blog, i)=>(
-               <div className='h-52 border-b border-gray-300 mx-10 py-3 max-w-2xl flex' key={i} onClick={()=> navigate(`/blog/${blog._id}`)}>
+               <div className='z-0 h-52 border-b border-gray-300 mx-10 py-3 max-w-2xl flex' key={i} onClick={()=> navigate(`/blog/${blog._id}`)}>
                 <div className='w-9/12 p-3'>
                    <UserBadge  width={15} className={"text-black"}>
                     {blog.userId.email}
@@ -64,8 +64,8 @@ const Dashboard = () => {
                <h3 className='h-12 ellipsis-2-lines text-gray-500'>{blog.content}</h3>
                 </div>
 
-                <div className='h-12/12 overflow-hidden relative w-42 flex items-center '>
-                 { blog.imageUrl &&  <img src={blog?.imageUrl} alt="" className='w-64 h-ful object-cover absolute' />}
+                <div className='h-12/12 overflow-hidden relative w-42 flex items-center -z-10'>
+                 { blog.imageUrl &&  <img src={blog?.imageUrl} alt="" className='w-64 h-ful object-cover absolute -z-10' />}
                 </div>
 
               </div>

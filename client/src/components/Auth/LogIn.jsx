@@ -127,7 +127,7 @@ const LogIn = ({setLocationPath}) => {
                                 <input
                                 onChange={handleChange}
                                 name='password' 
-                                type="text" 
+                                type="password" 
                                 placeholder='Enter your password' 
                                 className='bg-gray-300 text-sm py-2 px-2 rounded w-full'
                                 />

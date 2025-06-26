@@ -55,13 +55,13 @@ const Dashboard = () => {
               {/* </div> */}
 
              {blogs.map((blog, i)=>(
-               <div className='z-0 h-52 border-b border-gray-300 mx-10 py-3 max-w-2xl flex' key={i} onClick={()=> navigate(`/blog/${blog._id}`)}>
-                <div className='w-9/12 p-3'>
-                   <UserBadge  width={15} className={"text-black"}>
+               <div className='z-0 h-43 md:h-52 border-b border-gray-300 mx-4 md:mx-auto md:py-3 max-w-2xl flex justify-between' key={i} onClick={()=> navigate(`/blog/${blog._id}`)}>
+                <div className='w-fit p-2 md:p-3'>
+                   <UserBadge  width={15}>
                     {blog.userId.email}
                 </UserBadge>
-                <h1 className='text-2xl font-bold mt-3'>{blog.title}</h1>
-               <h3 className='h-12 ellipsis-2-lines text-gray-500'>{blog.content}</h3>
+                <h1 className='text-xl md:text-2xl font-bold mt-3'>{blog.title}</h1>
+               <h3 className='h-10 md:h-12 text-sm md:text-base ellipsis-2-lines text-gray-500'>{blog.content}</h3>
                 </div>
 
                 <div className='h-12/12 overflow-hidden relative w-42 flex items-center -z-10'>

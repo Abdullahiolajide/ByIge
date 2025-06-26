@@ -40,7 +40,7 @@ const DashboardLayout = () => {
                   <div className='text-2xl'>
                     <span className="font-bold">BI </span>ByIge
                 </div>
-               <div>
+               <div className='hidden md:block'>
                 {/* <input type="text" placeholder='Search' className='bg-gray-200 px-2 mx-3 py-2'/> */}
                     <div className='nav-input flex md:py-2 py-1 px-2 md:px-3 md:px-5 mx-3 md:mx-6 text-sm bg-gray-100 backdrop-blur-lg rounded-4xl w-fit justify-between items-center ' >
                         <span className='text-2xl text-gray-600'><CiSearch /></span>
@@ -59,8 +59,11 @@ const DashboardLayout = () => {
                               <MenuList>
                                <div className='z-100 w-100 shadow-md mt-3 -ml-26'>
                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'><span onClick={()=> navigate('/') }>Home</span></MenuItem>
-                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'>My Blogs </MenuItem>
-                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer'>Logout </MenuItem>
+                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer' onClick={()=> navigate(`/dashboard/my-blogs`) }>My Blogs </MenuItem>
+                                 <MenuItem className='bg-white p-4 hover:bg-gray-300 cursor-pointer' onClick={()=>{
+                                    navigate('/')
+                                    localStorage.removeItem('ByIgeAuthToken')
+                                 }}>Logout </MenuItem>
                                </div>
                               </MenuList>
                         </Menu>

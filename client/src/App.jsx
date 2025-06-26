@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 import CreateBlog from './pages/CreateBlog'
 import Blogs from './components/Blogs'
 import Blog from './pages/Blog'
+import MyBlogs from './pages/MyBlogs'
 const ToastContext = createContext()
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path='/dashboard/' element={<DashboardLayout />}>
           <Route index element={<Dashboard />}/>
           <Route path='create-blog' element={<CreateBlog />}/>
+          <Route path='my-blogs' element={<MyBlogs />}/>
         </Route>
 
       </Routes>
